@@ -27,3 +27,19 @@ print("치킨 당첨자: %d" % winner[0])
 winner = sample(id, 3)
 print("커피 당첨자 : ", end="")
 print(winner)
+
+print("Quiz 5--------------------------")
+customer = list(range(5))
+i = 0
+count = 0
+while i < 5 :
+	customer[i] = randint(5,50)
+	check = " "
+	if 5 < customer[i] < 15 :
+		check = "O"
+		count += 1
+	print("[{0}] {1}번째 손님 (소요시간: {2}분)".format(check,i+1,customer[i]))
+	i += 1
+print("총 탑승 승객 : {0} 분".format(count))
+
+print("Quiz 6--------------------------")
