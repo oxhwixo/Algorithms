@@ -43,3 +43,17 @@ while i < 5 :
 print("총 탑승 승객 : {0} 분".format(count))
 
 print("Quiz 6--------------------------")
+def std_weight(height, gender):
+	if gender == "남":
+		weight = height**2 * 22 
+	elif gender == "여":
+		weight = height**2 * 21
+	return weight
+	
+height = float(input("키를 입력하시오: "))
+gender = input("성별을 입력하시오 (남 or 여): ")
+weight = round(std_weight(height / 100, gender), 2)
+print("키 {0}cm {1}자의 표준 체중은 {2}kg 입니다."\
+	.format(height,gender,weight))
+
+print("Quiz 7--------------------------")
