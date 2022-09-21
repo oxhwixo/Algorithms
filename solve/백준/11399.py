@@ -12,3 +12,10 @@ for i in range(n):
 
 
 print(res)
+
+
+# 이렇게도 가능
+# time = []
+# for i in range(1,n+1):
+#     time.append(sum(data[:i]))
+# res = sum(time)
