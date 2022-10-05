@@ -1,8 +1,8 @@
 import sys
 
 input = sys.stdin.readline
-
 n = int(input().rstrip())
+
 score = {1:0, 2:0}
 time = {1:0, 2:0} # 골을 넣은 시간 기록용
 ans = {1:0, 2:0} # 총 이기고 있던 시간
