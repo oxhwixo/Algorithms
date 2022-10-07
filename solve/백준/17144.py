@@ -36,17 +36,57 @@ def spread():
 				nx, ny = x + dx[i], y + dy[i]
 				if 0 <= nx < r and 0 <= ny < c and data[nx][ny] != -1:
 					temp[nx][ny] += dust
-					temp[x][y] -= dust
+					temp[x][y] -= dust # 0 - dust 라서 음수 값이 저장됨
 
 	for i in range(r):
 		for j in range(c):
 			data[i][j] += temp[i][j]
 
-spread()
-for x in range(r):
-		print(data[x])
 
 # 공기청정기 작동
 # 위쪽은 반시계 순환, 아래쪽은 시계방향 순환
 # 바람이 불면 미세먼지가 바람 방향대로 한 칸씩 이동
 # 공기청정기로 들어간 미세먼지는 정화됨
+
+def clean_up():
+	dx = [0, -1, 0, 1] # 우 상 좌 하 
+	dy = [1, 0, -1, 0]
+	x, y, direction = top, 1, 0  
+	before = 0 # 공기청정기 바로 옆의 먼지가 이동하면 그 자리는 빈자리가 된다.
+
+	while True: 
+		nx, ny = x + dx[direction], y + dy[direction]
+		if x == top and y == 0:
+			break
+		if not 0 <= nx < r or not 0 <= ny < c: # 범위를 벗어나면 방향 전환
+			direction += 1
+			continue
+		
+		# (x, y) 위치에 이 전 값을 저장하고, 이전 값은 x, y 값으로 갱신함
+		data[x][y], before = before, data[x][y]
+		x, y = nx, ny # x,y 값 갱신 (이동)
+
+def clean_down():
+	dx = [0, 1, 0, -1] # 우 하 좌 상
+	dy = [1, 0, -1, 0]
+	x, y, direction = bottom, 1, 0
+	before = 0
+
+	while True: 
+		nx, ny = x + dx[direction], y + dy[direction]
+		if x == bottom and y == 0:
+			break
+		if not 0 <= nx < r or not 0 <= ny < c:
+			direction += 1
+			continue
+		
+		data[x][y], before = before, data[x][y]
+		x, y = nx, ny
+
+for _ in range(t):
+    spread()
+    clean_up()
+    clean_down()
+
+# 공기청정기를 표현한 2칸이 -1로 되어있기 때문에 2를 더해줌
+print(sum(map(sum, data)) + 2) 

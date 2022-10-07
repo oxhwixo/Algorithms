@@ -24,7 +24,7 @@ for i in range(n):
 		graph[x][y] = 1
 
 answer = 0
-for i in range(100):
+for i in range(100): # (99,99) 까지만 확인
 	for j in range(100):
 		if graph[i][j] == 1 and graph[i + 1][j] == 1 and graph[i][j + 1] == 1 and graph[i + 1][j + 1] == 1:
 			answer += 1
