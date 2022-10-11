@@ -4,6 +4,13 @@
 import sys
 from collections import deque
 
+input = sys.stdin.readline
+
+dx = [-1, 1, 0, 0]
+dy = [0, 0, -1, 1]
+
+T = int(input().rstrip())
+
 def bfs():
 	count = 0
 	queue = deque([])
@@ -22,20 +29,13 @@ def bfs():
 						nx = x + dx[k]
 						ny = y + dy[k]
 						if 0 <= nx < M and 0 <= ny < N and graph[nx][ny] == 1:
-							graph[nx][ny] = 0 
+							graph[nx][ny] = 0 # 4방향 탐색한 것들도 방문하면 0으로 바꿔줘야 탐색중 재방문 하지 않음
 							queue.append((nx, ny))
 
 				count += 1
 
 	return(count)
-
-input = sys.stdin.readline
-
-dx = [-1, 1, 0, 0]
-dy = [0, 0, -1, 1]
-
-T = int(input().rstrip())
-
+	
 for _ in range(T):
 	M, N, K = map(int, input().split(" "))
 

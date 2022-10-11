@@ -1,3 +1,8 @@
-a, b = map(int,input().split())
+a = list(input())
 
-print(a/b)
+for i in range(len(a)):
+	if a[i].isupper():
+		a[i] = a[i].lower()
+	else:
+		a[i] = a[i].upper()
+print(''.join(s for s in a))
