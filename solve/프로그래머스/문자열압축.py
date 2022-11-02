@@ -30,6 +30,3 @@ def solution(s):
 		i += 1
 			
 	return answer
-
-
-print(solution("xababcdcdababcdcd"))
