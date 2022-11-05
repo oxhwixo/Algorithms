@@ -4,7 +4,7 @@ def solution(s):
 	answer = len(s)
 	i = 1
 
-	while i < len(s):  
+	while i < len(s)//2 + 1 :  
 		split_s = [ s[j: j + i] for j in range(0, len(s), i)]
 
 		temp_answer = ""
