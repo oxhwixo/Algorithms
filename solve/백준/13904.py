@@ -2,6 +2,7 @@
 # 골드 3
 
 import sys
+import heapq
 input = sys.stdin.readline
 
 n = int(input())
@@ -13,9 +14,8 @@ result = 0
 
 for day in range(n, 0, -1): # 마지막 날 부터 거꾸로 계산
 	while datas and datas[-1][0] >= day:
-		temp.append(datas.pop()[1])
+		heapq.heappush(temp, -datas.pop()[1])
 	if temp:
-		temp.sort()
-		result += temp.pop()
+		result += -(heapq.heappop(temp))
 
 print(result)
