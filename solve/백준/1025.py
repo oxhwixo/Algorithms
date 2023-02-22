@@ -1,3 +1,5 @@
+# 1025 제곱수 찾기
+
 import math
 
 n, m  = map(int, input().split())

@@ -23,7 +23,7 @@ def dfs(depth):
 dfs(0)
 print(max(res))
 
-# 조합 이용한 코드
+# 순열 이용한 코드
 # from itertools import permutations
 # cases = permutations(arr)
 # for case in cases:
