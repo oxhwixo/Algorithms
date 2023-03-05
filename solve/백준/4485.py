@@ -1,12 +1,11 @@
 # 4485 녹색 옷 입은 애가 젤다지?
 # 골드 4
 
-from collections import deque
 import heapq
-
 
 dx = [-1, 1, 0, 0]
 dy = [0, 0, -1, 1]
+
 count = 1
 
 def dijkstra():
@@ -31,7 +30,6 @@ def dijkstra():
                     distance[nx][ny] = new_cost
                     heapq.heappush(q, (new_cost, nx, ny))
 
-            
 while True:
     n = int(input())
     
@@ -41,9 +39,6 @@ while True:
     graph = [list(map(int, input().split())) for _ in range(n)]
     distance = [[1e9] * n for _ in range(n)]
 
-    while q:
-        x, y = q.popleft()
-        for i in range(4):
-
+    dijkstra()
 
     count += 1
