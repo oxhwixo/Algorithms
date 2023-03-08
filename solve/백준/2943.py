@@ -8,8 +8,8 @@ input = sys.stdin.readline
 n, m = map(int, input().split())
 
 k = int(math.sqrt(n))
-box = [0] * 100000
-cup = [0] * 100000
+box = [0] * n
+cup = [0] * (n // k + 1)
 
 # 내가 한 타임에 "넣은 성냥 수"만 세는게 아니라 
 # "성냥 넣은 곳들의 총 성냥"을 세는것임!!!
@@ -42,8 +42,8 @@ for _ in range(m):
   # 이제 start는 컵의 시작구간이고 end는 컵의 마지막구간임
   # 앞으로 넣을 성냥은 전부 컵에 들어감
     while(start < end):
-        cup[start // k] += 1
-        ans += cup[start // k]
+        cup[start // k - 1] += 1
+        ans += cup[start // k - 1]
         start += k
 
     print(ans)
