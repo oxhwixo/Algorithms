@@ -1,6 +1,8 @@
 # 13549 숨바꼭질 3
 # 골드 5
 
+# 0-1 bfs
+
 from collections import deque
 
 n, k = map(int, input().split())
