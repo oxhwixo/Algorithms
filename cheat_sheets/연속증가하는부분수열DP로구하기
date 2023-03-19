@@ -1,0 +1,10 @@
+data = [8, 2, 9, 1, 4, 6, 7, 10]
+data_len = len(data)
+
+d = [1] * data_len
+for i in range(data_len):
+    for j in range(i):
+        if data[i] > data[j]:
+            d[i] = max(d[i], d[j] + 1)
+
+print(d)
