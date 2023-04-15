@@ -1,30 +1,13 @@
-n = int(input())
-graph = [list(map(int, input().split())) for _ in range(n)]
-r, c = map(int, input().split())
-visited = [[False] * n for _ in range(n)]
+graph = [list(map(int, input().split())) for _ in range(8)]
+dp = [[0] * 8 for _ in range(8)]
+dp[0][0] = graph[0][0]
 
-dx = [0, 0, -1, 1]
-dy = [-1, 1, 0, 0]
+for i in range(1,8):
+    dp[0][i] = dp[0][i-1] + graph[0][i]
+    dp[i][0] = dp[i-1][0] + graph[i][0]
 
-def dfs(x, y):
-    if visited[x][y] == True:
-        return
-    for i in range(4):
-        nx = dx[i] + x
-        ny = dy[i] + y
+for i in range(1, 8):
+    for j in range(1, 8):
+        dp[i][j] = max(dp[i-1][j] + graph[i][j], dp[i][j-1] + graph[i][j])
 
-        if 0 <= nx < r and 0 <= ny < c and visited[nx][ny] == False:
-            visited[nx][ny] = True
-            if graph[nx][ny] < graph[r - 1][c - 1]:
-                graph[nx][ny] = 0
-            dfs(nx, ny)
-
-if graph[0][0] < graph[r-1][c-1]:
-    graph[0][0] = 0
-    
-dfs(0, 0)
-
-for i in range(n):
-    for j in range(n):
-        print(graph[i][j], end=" ")
-    print()
+print(dp[7][7])
